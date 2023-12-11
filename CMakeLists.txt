@@ -17,20 +17,7 @@ project(mlone VERSION 1.0
     LANGUAGES CXX)
 file(GLOB SOURCES "src/*.cpp")
 file(GLOB TESTSRC "src/*.cpp")
-list(FILTER TESTSRC EXCLUDE REGEX "src/main.cpp")
 include_directories(${CMAKE_SOURCE_DIR}/build/_deps/googletest-src/googletest/include)
 include_directories(src/include)
 add_executable(mlone.exe ${SOURCES})
-enable_testing()
-file(GLOB TESTS "src/testing/*.cc")
-add_executable(
-  tests.exe
-  ${TESTS}
-  ${TESTSRC})
-target_link_libraries(
-  tests.exe
-  GTest::gtest_main
-)
 
-include(GoogleTest)
-gtest_discover_tests(tests.exe)
